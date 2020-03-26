@@ -1,52 +1,67 @@
-import { pairGenerator } from './roulette'
+import { pairGenerator, generatePairs } from './roulette'
 
 describe('pairGenerator', () => {
 
   describe('when empty array given', () => {
     test('should return an empty array', () => {
       // given
-      const value = []
+      const peopleName = []
 
       // then
-      expect(pairGenerator(value)).toEqual([])
+      expect(pairGenerator(peopleName)).toEqual([])
     })
   })
 
-  describe('when one value in array', () => {
-    test('should return the value', () => {
+  describe('when one peopleName in array', () => {
+    test('should return the peopleName', () => {
       // given
-      const value = ['ABC']
+      const peopleName = ['ABC']
 
       // when
-      expect(pairGenerator(value)).toEqual(['ABC'])
+      expect(pairGenerator(peopleName)).toEqual(['ABC'])
     })
   })
 
-  describe('when value lenght is not three or four', () => {
-    test('should remove the value from the array for one value given', () => {
+  describe('when peopleName lenght is not three or four', () => {
+    test('should remove the peopleName from the array for one peopleName given', () => {
       // given
-      const value = ['A']
+      const peopleName = ['A']
 
       // when
-      expect(pairGenerator(value)).toEqual([])
+      expect(pairGenerator(peopleName)).toEqual([])
     })
 
-    test('should remove the value from the array for more than one value', () => {
+    test('should remove the peopleName from the array for more than one peopleName', () => {
       // given
-      const value = ['DGY', 'A', 'FGT']
+      const peopleList = ['DGY', 'A', 'FGT']
 
       // when
-      expect(pairGenerator(value)).toEqual(['DGY', 'FGT'])
+      expect(pairGenerator(peopleList)).toEqual(['DGY', 'FGT'])
+    })
+  })
+
+  describe('when peopleName contains special characters or numbers', () => {
+    test('should remove the peopleName from the array for one peopleName given', () => {
+      // given
+      const peopleList = ['A', 'RTC', 143, '%ŸT', 'TY1', 'RREREZSWs', '1234', 'GKP']
+
+      // when
+      expect(pairGenerator(peopleList)).toEqual(['RTC', 'GKP'])
     })
   })
 
-  describe('when value contains special characters or numbers', () => {
-    test('should remove the value from the array for one value given', () => {
+  describe('when array contains most than 4 peopleNames', ()=>{
+    test('should return random pairs of peopleNames', ()=>{
       // given
-      const value = ['A', 'RTC', 143, '%ŸT', 'TY1', 'RREREZSWs', '1234', 'GKP']
+      const cleanPeopleList = ['DGY', 'TRD', 'FGT','MMG']
 
-      // when
-      expect(pairGenerator(value)).toEqual(['RTC', 'GKP'])
+      // when 
+      const result = generatePairs(cleanPeopleList)
+
+      // then
+      expect(result.length).toEqual(2)
+
     })
   })
+
 })
