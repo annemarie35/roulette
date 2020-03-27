@@ -19,7 +19,7 @@ const checkPeopleNameFormat = (peopleName) => {
 
 export const generatePairs = (cleanPeopleList) => {
   
-  let pairs
+  let peopleNamePairs
 
   if (cleanPeopleList.length < 4 ) {
 
@@ -28,12 +28,11 @@ export const generatePairs = (cleanPeopleList) => {
   } 
   else {
             
-    const newArray = cleanPeopleList.sort(function() { return 0.5 - Math.random()}) 
-    
-    pairs = generatePairsAlgo(newArray)      
+    const newArray = cleanPeopleList.sort(function() { return 0.5 - Math.random()})   
+    peopleNamePairs = generatePairsAlgo(newArray)      
   }
-  //console.log(pairs)
-  return pairs
+
+  return peopleNamePairs
 }
 
 const generatePairsAlgo = (newArray) => {
@@ -41,18 +40,15 @@ const generatePairsAlgo = (newArray) => {
   let pairs = []
   const moduloNumberPeopleName = newArray.length % 4
 
-
-  if(newArray.length === 4) {
-    pairs.push([newArray.pop(),newArray.pop()],[newArray.pop(),newArray.pop()])
-       
+  if(newArray.length === 4) {   
+    pairs.push([newArray.pop(),newArray.pop()],[newArray.pop(),newArray.pop()])       
   }
   if(newArray.length === 6) {
     while(newArray.length ) {
       pairs.push([newArray.pop(), newArray.pop()])
     }
   }
-  else{
-    
+  else{   
     while(newArray.length > 3) {
       pairs.push([newArray.pop(), newArray.pop(), newArray.pop(), newArray.pop()])
     }
