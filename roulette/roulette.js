@@ -8,8 +8,6 @@ export const pairGenerator = (peopleList) => {
       }
   })
 
-
-
   return cleanPeopleList
 }
 
