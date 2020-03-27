@@ -21,17 +21,41 @@ export const generatePairs = (cleanPeopleList) => {
   
   let pairs
 
-  if (cleanPeopleList.length % 2 != 0) {
-    console.log("You must have an even number of names. You currently have " + cleanPeopleList.length + " names.");
-  } else {
-      let arr1 = cleanPeopleList.slice()          
-         
-      const newArray = arr1.sort(function() { return 0.5 - Math.random()}) 
-      
-      pairs = [[newArray[0],newArray[1]],[newArray[2],newArray[3]]]
-      
+  if (cleanPeopleList.length < 4 ) {
+
+    return cleanPeopleList
+  
+  } 
+  else {
+            
+    const newArray = cleanPeopleList.sort(function() { return 0.5 - Math.random()}) 
+    
+    pairs = generatePairsAlgo(newArray)      
   }
   console.log(pairs)
+  return pairs
+}
+
+const generatePairsAlgo = (newArray) => {
+
+  let pairs
+
+  if(newArray.length === 4){
+    pairs = [[newArray[0],newArray[1]],[newArray[2],newArray[3]]]    
+  }
+  if(newArray.length === 5){
+    pairs = [newArray[0],newArray[1],newArray[2],newArray[3],newArray[4]]
+  }
+  if(newArray.length === 6){
+    pairs = [[newArray[0],newArray[1]],[newArray[2],newArray[3]],[newArray[4],newArray[5]]]
+  }
+  if(newArray.length === 7){
+    pairs = [[newArray[0],newArray[1],newArray[2],newArray[3]],[newArray[4],newArray[5],newArray[6]]]
+  }
+  if(newArray.length === 8){
+    pairs = [[newArray[0],newArray[1],newArray[2],newArray[3]],[newArray[4],newArray[5],newArray[6],newArray[7]]]
+  }
+
   return pairs
 }
 
