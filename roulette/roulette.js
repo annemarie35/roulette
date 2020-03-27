@@ -40,10 +40,10 @@ const generatePairsAlgo = (newArray) => {
   let pairs = []
   const moduloNumberPeopleName = newArray.length % 4
 
-  if(newArray.length === 4) {   
+  if (newArray.length === 4) {   
     pairs.push([newArray.pop(),newArray.pop()],[newArray.pop(),newArray.pop()])       
   }
-  if(newArray.length === 6) {
+  if (newArray.length === 6) {
     while(newArray.length ) {
       pairs.push([newArray.pop(), newArray.pop()])
     }
@@ -64,4 +64,14 @@ const generatePairsAlgo = (newArray) => {
   } 
 
   return pairs
+}
+
+export const convertGeneratePairsToJson = (generatePairs) => {
+  let jsonGeneratePairs = {}
+
+  generatePairs.map((pairs,key)=>{
+    jsonGeneratePairs['Groupe'+ key ] = pairs
+  })
+
+  return jsonGeneratePairs
 }

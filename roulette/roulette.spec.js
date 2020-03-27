@@ -1,4 +1,4 @@
-import { pairGenerator, generatePairs } from './roulette'
+import { pairGenerator, generatePairs, convertGeneratePairsToJson } from './roulette'
 
 describe('pairGenerator', () => {
 
@@ -222,4 +222,53 @@ describe('pairGenerator', () => {
       expect(result[2].length).toEqual(4)
     })
   })
+
+  describe('when array contains 27 peopleNames', () => {
+    test('should return random pairs of peopleNames', () => {
+      // given
+      const cleanPeopleList = ['DGY', 'TRD', 'FGT','MMG','RTD','TGHS','CDT','MLK','BOSS','PKJK','XDC','NBV','DGY', 'TRD', 'FGT','MMG','RTD','TGHS','CDT','MLK','BOSS','PKJK','XDC','NBV','NBV','JHG','ZDF']
+
+      // when 
+      const result = generatePairs(cleanPeopleList)
+
+      // then
+      expect(result.length).toEqual(7)
+      expect(result[0].length).toEqual(4)
+      expect(result[1].length).toEqual(4)
+      expect(result[2].length).toEqual(4)
+      expect(result[3].length).toEqual(4)
+      expect(result[4].length).toEqual(4)
+      expect(result[5].length).toEqual(4)
+      expect(result[6].length).toEqual(3)
+    })
+  })
+
+  describe('when array contains 6 peopleNames', () => {
+    test('should return random pairs of peopleNames', () => {
+      // given
+      const cleanPeopleList = ['DGY', 'TRD', 'FGT','MMG','RTD','TGHS']
+
+      // when 
+      const result = generatePairs(cleanPeopleList)
+      const expected = convertGeneratePairsToJson(result)
+
+      // then
+      expect(expected.Groupe1.length).toEqual(2)     
+    })
+  })
+
+  describe('when array contains 1 peopleNames', () => {
+    test('should return random pairs of peopleNames', () => {
+      // given
+      const cleanPeopleList = ['DGY', 'TRD', 'FGT','MMG','RTD','TGHS','DDDD','XXX','CCC','BBBB','DDD','QQQ','ZZZ','AAA','FFR','WXC','HGF']
+
+      // when 
+      const result = generatePairs(cleanPeopleList)
+      const expected = convertGeneratePairsToJson(result)
+
+      // then
+      expect(expected.Groupe1.length).toEqual(4)     
+    })
+  })
+
 })
