@@ -53,27 +53,16 @@ const generatePairsAlgo = (newArray) => {
   }
   else{
     
-    if(moduloNumberPeopleName === 0) {
-      while(newArray.length) {
-        pairs.push([newArray.pop(), newArray.pop(), newArray.pop(), newArray.pop()])
-      }
+    while(newArray.length > 3) {
+      pairs.push([newArray.pop(), newArray.pop(), newArray.pop(), newArray.pop()])
     }
     if(moduloNumberPeopleName % 4 === 1) {
-      while(newArray.length !== 1) {
-        pairs.push([newArray.pop(), newArray.pop(), newArray.pop(), newArray.pop()])
-      }
       pairs[pairs.length - 1 ].push(newArray.pop())
     }
     if(newArray.length % 4 === 2) {
-      while(newArray.length >2) {
-        pairs.push([newArray.pop(), newArray.pop(), newArray.pop(), newArray.pop()])
-      }
       pairs.push([newArray.pop(), newArray.pop()])
     }
     if(newArray.length % 4 === 3) {
-      while(newArray.length >3) {
-        pairs.push([newArray.pop(), newArray.pop(), newArray.pop(), newArray.pop()])
-      }
       pairs.push([newArray.pop(), newArray.pop(), newArray.pop()])
     }
   } 
