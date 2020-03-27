@@ -32,49 +32,51 @@ export const generatePairs = (cleanPeopleList) => {
     
     pairs = generatePairsAlgo(newArray)      
   }
-  console.log(pairs)
+  //console.log(pairs)
   return pairs
 }
 
 const generatePairsAlgo = (newArray) => {
 
-  let pairs
+  let pairs = []
+  const moduloNumberPeopleName = newArray.length % 4
 
-  if(newArray.length === 4){
-    pairs = [[newArray[0],newArray[1]],[newArray[2],newArray[3]]]    
+
+  if(newArray.length === 4) {
+    pairs.push([newArray.pop(),newArray.pop()],[newArray.pop(),newArray.pop()])
+       
   }
-  if(newArray.length === 5){
-    pairs = [newArray[0],newArray[1],newArray[2],newArray[3],newArray[4]]
+  if(newArray.length === 6) {
+    while(newArray.length ) {
+      pairs.push([newArray.pop(), newArray.pop()])
+    }
   }
-  if(newArray.length === 6){
-    pairs = [[newArray[0],newArray[1]],[newArray[2],newArray[3]],[newArray[4],newArray[5]]]
-  }
-  if(newArray.length === 7){
-    pairs = [[newArray[0],newArray[1],newArray[2],newArray[3]],[newArray[4],newArray[5],newArray[6]]]
-  }
-  if(newArray.length === 8){
-    pairs = [[newArray[0],newArray[1],newArray[2],newArray[3]],[newArray[4],newArray[5],newArray[6],newArray[7]]]
-  }
+  else{
+    
+    if(moduloNumberPeopleName === 0) {
+      while(newArray.length) {
+        pairs.push([newArray.pop(), newArray.pop(), newArray.pop(), newArray.pop()])
+      }
+    }
+    if(moduloNumberPeopleName % 4 === 1) {
+      while(newArray.length !== 1) {
+        pairs.push([newArray.pop(), newArray.pop(), newArray.pop(), newArray.pop()])
+      }
+      pairs[pairs.length - 1 ].push(newArray.pop())
+    }
+    if(newArray.length % 4 === 2) {
+      while(newArray.length >2) {
+        pairs.push([newArray.pop(), newArray.pop(), newArray.pop(), newArray.pop()])
+      }
+      pairs.push([newArray.pop(), newArray.pop()])
+    }
+    if(newArray.length % 4 === 3) {
+      while(newArray.length >3) {
+        pairs.push([newArray.pop(), newArray.pop(), newArray.pop(), newArray.pop()])
+      }
+      pairs.push([newArray.pop(), newArray.pop(), newArray.pop()])
+    }
+  } 
 
   return pairs
 }
-
-
-// if (names.length % 2 != 0) {
-//   alert("You must have an even number of names. You currently have " + names.length + " names.");
-// } else {
-//   var arr1 = names.slice(), // copy array
-//       arr2 = names.slice(); // copy array again
-
-//   arr1.sort(function() { return 0.5 - Math.random();}); // shuffle arrays
-//   arr2.sort(function() { return 0.5 - Math.random();});
-
-//   while (arr1.length) {
-//       var name1 = arr1.pop(), // get the last value of arr1
-//           name2 = arr2[0] == name1 ? arr2.pop() : arr2.shift();
-//           //        ^^ if the first value is the same as name1, 
-//           //           get the last value, otherwise get the first
-
-//       console.log(name1 + ' gets ' + name2);
-//   }
-// }

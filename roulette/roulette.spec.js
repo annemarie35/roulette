@@ -109,7 +109,8 @@ describe('pairGenerator', () => {
       const result = generatePairs(cleanPeopleList)
 
       // then
-      expect(result.length).toEqual(5)
+      expect(result.length).toEqual(1)
+      expect(result[0].length).toEqual(5)
     })
   })
 
@@ -159,7 +160,7 @@ describe('pairGenerator', () => {
     })
   })
   
-  describe.skip('when array contains 9 peopleNames', () => {
+  describe('when array contains 9 peopleNames', () => {
     test('should return random pairs of peopleNames', () => {
       // given
       const cleanPeopleList = ['DGY', 'TRD', 'FGT','MMG','RTD','TGHS','CDT','MLK','BOSS',]
@@ -168,13 +169,13 @@ describe('pairGenerator', () => {
       const result = generatePairs(cleanPeopleList)
 
       // then
-      expect(result.length).toEqual(1)
+      expect(result.length).toEqual(2)
       expect(result[0].length).toEqual(4)
       expect(result[1].length).toEqual(5)
     })
   })
   
-  describe.skip('when array contains 10 peopleNames', () => {
+  describe('when array contains 10 peopleNames', () => {
     test('should return random pairs of peopleNames', () => {
       // given
       const cleanPeopleList = ['DGY', 'TRD', 'FGT','MMG','RTD','TGHS','CDT','MLK','BOSS','PKJK']
@@ -183,14 +184,14 @@ describe('pairGenerator', () => {
       const result = generatePairs(cleanPeopleList)
 
       // then
-      expect(result.length).toEqual(1)
+      expect(result.length).toEqual(3)
       expect(result[0].length).toEqual(4)
       expect(result[1].length).toEqual(4)
-      expect(result[1].length).toEqual(2)
+      expect(result[2].length).toEqual(2)
     })
   })
   
-  describe.skip('when array contains 11 peopleNames', () => {
+  describe('when array contains 11 peopleNames', () => {
     test('should return random pairs of peopleNames', () => {
       // given
       const cleanPeopleList = ['DGY', 'TRD', 'FGT','MMG','RTD','TGHS','CDT','MLK','BOSS','PKJK','XDC']
@@ -199,14 +200,14 @@ describe('pairGenerator', () => {
       const result = generatePairs(cleanPeopleList)
 
       // then
-      expect(result.length).toEqual(1)
+      expect(result.length).toEqual(3)
       expect(result[0].length).toEqual(4)
       expect(result[1].length).toEqual(4)
-      expect(result[1].length).toEqual(3)
+      expect(result[2].length).toEqual(3)
     })
   })
   
-  describe.skip('when array contains 12 peopleNames', () => {
+  describe('when array contains 12 peopleNames', () => {
     test('should return random pairs of peopleNames', () => {
       // given
       const cleanPeopleList = ['DGY', 'TRD', 'FGT','MMG','RTD','TGHS','CDT','MLK','BOSS','PKJK','XDC','NBV']
@@ -215,10 +216,10 @@ describe('pairGenerator', () => {
       const result = generatePairs(cleanPeopleList)
 
       // then
-      expect(result.length).toEqual(1)
+      expect(result.length).toEqual(3)
       expect(result[0].length).toEqual(4)
       expect(result[1].length).toEqual(4)
-      expect(result[1].length).toEqual(4)
+      expect(result[2].length).toEqual(4)
     })
   })
 })
