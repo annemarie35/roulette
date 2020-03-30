@@ -1,4 +1,4 @@
-export const pairGenerator = (peopleList) => {
+export const cleanPeopleList = (peopleList) => {
   let cleanPeopleList = []
 
   peopleList.map((peopleName) => {

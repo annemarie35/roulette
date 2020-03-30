@@ -1,4 +1,4 @@
-import { pairGenerator, generatePairs, convertGeneratePairsToJson } from './roulette'
+import { cleanPeopleList, generatePairs, convertGeneratePairsToJson } from './roulette'
 
 describe('pairGenerator', () => {
 
@@ -8,7 +8,7 @@ describe('pairGenerator', () => {
       const peopleName = []
 
       // then
-      expect(pairGenerator(peopleName)).toEqual([])
+      expect(cleanPeopleList(peopleName)).toEqual([])
     })
   })
 
@@ -18,7 +18,7 @@ describe('pairGenerator', () => {
       const peopleName = ['ABC']
 
       // when
-      expect(pairGenerator(peopleName)).toEqual(['ABC'])
+      expect(cleanPeopleList(peopleName)).toEqual(['ABC'])
     })
   })
 
@@ -28,7 +28,7 @@ describe('pairGenerator', () => {
       const peopleName = ['A']
 
       // when
-      expect(pairGenerator(peopleName)).toEqual([])
+      expect(cleanPeopleList(peopleName)).toEqual([])
     })
 
     test('should remove the peopleName from the array for more than one peopleName', () => {
@@ -36,7 +36,7 @@ describe('pairGenerator', () => {
       const peopleList = ['DGY', 'A', 'FGT']
 
       // when
-      expect(pairGenerator(peopleList)).toEqual(['DGY', 'FGT'])
+      expect(cleanPeopleList(peopleList)).toEqual(['DGY', 'FGT'])
     })
   })
 
@@ -46,7 +46,7 @@ describe('pairGenerator', () => {
       const peopleList = ['A', 'RTC', 143, '%ŸT', 'TY1', 'RREREZSWs', '1234', 'GKP']
 
       // when
-      expect(pairGenerator(peopleList)).toEqual(['RTC', 'GKP'])
+      expect(cleanPeopleList(peopleList)).toEqual(['RTC', 'GKP'])
     })
   })
 
@@ -257,7 +257,7 @@ describe('pairGenerator', () => {
     })
   })
 
-  describe('when array contains 1 peopleNames', () => {
+  describe('when array contains 27 peopleNames', () => {
     test('should return random pairs of peopleNames', () => {
       // given
       const cleanPeopleList = ['DGY', 'TRD', 'FGT','MMG','RTD','TGHS','DDDD','XXX','CCC','BBBB','DDD','QQQ','ZZZ','AAA','FFR','WXC','HGF']
@@ -270,5 +270,4 @@ describe('pairGenerator', () => {
       expect(expected.Groupe1.length).toEqual(4)     
     })
   })
-
 })
