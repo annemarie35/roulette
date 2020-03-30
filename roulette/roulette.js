@@ -18,17 +18,13 @@ const checkPeopleNameFormat = (peopleName) => {
 }
 
 export const generatePairs = (cleanPeopleList) => {
-  
   let peopleNamePairs
 
   if (cleanPeopleList.length < 4 ) {
-
     return cleanPeopleList
-  
   } 
   else {
-            
-    const newArray = cleanPeopleList.sort(function() { return 0.5 - Math.random()})   
+    const newArray = cleanPeopleList.sort(function() { return 0.5 - Math.random()})
     peopleNamePairs = generatePairsAlgo(newArray)      
   }
 
@@ -36,28 +32,30 @@ export const generatePairs = (cleanPeopleList) => {
 }
 
 const generatePairsAlgo = (newArray) => {
-
   let pairs = []
   const moduloNumberPeopleName = newArray.length % 4
 
   if (newArray.length === 4) {   
-    pairs.push([newArray.pop(),newArray.pop()],[newArray.pop(),newArray.pop()])       
+    pairs.push([newArray.pop(), newArray.pop()], [newArray.pop(), newArray.pop()])
   }
   if (newArray.length === 6) {
-    while(newArray.length ) {
+    while (newArray.length) {
       pairs.push([newArray.pop(), newArray.pop()])
     }
   }
-  else{   
+  else {
     while(newArray.length > 3) {
       pairs.push([newArray.pop(), newArray.pop(), newArray.pop(), newArray.pop()])
     }
+
     if(moduloNumberPeopleName % 4 === 1) {
       pairs[pairs.length - 1 ].push(newArray.pop())
     }
+
     if(newArray.length % 4 === 2) {
       pairs.push([newArray.pop(), newArray.pop()])
     }
+
     if(newArray.length % 4 === 3) {
       pairs.push([newArray.pop(), newArray.pop(), newArray.pop()])
     }
@@ -69,7 +67,7 @@ const generatePairsAlgo = (newArray) => {
 export const convertGeneratePairsToJson = (generatePairs) => {
   let jsonGeneratePairs = {}
 
-  generatePairs.map((pairs,key)=>{
+  generatePairs.map((pairs, key) => {
     jsonGeneratePairs['Groupe'+ key ] = pairs
   })
 
