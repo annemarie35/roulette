@@ -1,4 +1,4 @@
-export const pairGenerator = (peopleList) => {
+export const cleanPeopleList = (peopleList) => {
   let cleanPeopleList = []
 
   peopleList.map((peopleName) => {
@@ -7,8 +7,6 @@ export const pairGenerator = (peopleList) => {
         cleanPeopleList.push(peopleName)
       }
   })
-
-
 
   return cleanPeopleList
 }
@@ -20,39 +18,58 @@ const checkPeopleNameFormat = (peopleName) => {
 }
 
 export const generatePairs = (cleanPeopleList) => {
-  
-  let pairs
+  let peopleNamePairs
 
-  if (cleanPeopleList.length % 2 != 0) {
-    console.log("You must have an even number of names. You currently have " + cleanPeopleList.length + " names.");
-  } else {
-      let arr1 = cleanPeopleList.slice()          
-         
-      const newArray = arr1.sort(function() { return 0.5 - Math.random()}) 
-      
-      pairs = [[newArray[0],newArray[1]],[newArray[2],newArray[3]]]
-      
+  if (cleanPeopleList.length < 4 ) {
+    return cleanPeopleList
+  } 
+  else {
+    const newArray = cleanPeopleList.sort(function() { return 0.5 - Math.random()})
+    peopleNamePairs = generatePairsAlgo(newArray)      
   }
-  console.log(pairs)
+
+  return peopleNamePairs
+}
+
+const generatePairsAlgo = (newArray) => {
+  let pairs = []
+  const moduloNumberPeopleName = newArray.length % 4
+
+  if (newArray.length === 4) {   
+    pairs.push([newArray.pop(), newArray.pop()], [newArray.pop(), newArray.pop()])
+  }
+  if (newArray.length === 6) {
+    while (newArray.length) {
+      pairs.push([newArray.pop(), newArray.pop()])
+    }
+  }
+  else {
+    while(newArray.length > 3) {
+      pairs.push([newArray.pop(), newArray.pop(), newArray.pop(), newArray.pop()])
+    }
+
+    if(moduloNumberPeopleName % 4 === 1) {
+      pairs[pairs.length - 1 ].push(newArray.pop())
+    }
+
+    if(newArray.length % 4 === 2) {
+      pairs.push([newArray.pop(), newArray.pop()])
+    }
+
+    if(newArray.length % 4 === 3) {
+      pairs.push([newArray.pop(), newArray.pop(), newArray.pop()])
+    }
+  } 
+
   return pairs
 }
 
+export const convertGeneratePairsToJson = (generatePairs) => {
+  let jsonGeneratePairs = {}
 
-// if (names.length % 2 != 0) {
-//   alert("You must have an even number of names. You currently have " + names.length + " names.");
-// } else {
-//   var arr1 = names.slice(), // copy array
-//       arr2 = names.slice(); // copy array again
+  generatePairs.map((pairs, key) => {
+    jsonGeneratePairs['Groupe'+ key ] = pairs
+  })
 
-//   arr1.sort(function() { return 0.5 - Math.random();}); // shuffle arrays
-//   arr2.sort(function() { return 0.5 - Math.random();});
-
-//   while (arr1.length) {
-//       var name1 = arr1.pop(), // get the last value of arr1
-//           name2 = arr2[0] == name1 ? arr2.pop() : arr2.shift();
-//           //        ^^ if the first value is the same as name1, 
-//           //           get the last value, otherwise get the first
-
-//       console.log(name1 + ' gets ' + name2);
-//   }
-// }
+  return jsonGeneratePairs
+}
